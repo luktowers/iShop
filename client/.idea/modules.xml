@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/client.iml" filepath="$PROJECT_DIR$/.idea/modules/client.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/client.main.iml" filepath="$PROJECT_DIR$/.idea/modules/client.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/iShop.iml" filepath="$PROJECT_DIR$/.idea/iShop.iml" />
     </modules>
   </component>
 </project>

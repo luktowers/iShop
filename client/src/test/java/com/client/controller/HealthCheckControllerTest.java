@@ -1,4 +1,4 @@
-package com.client.controllers;
+package com.client.controller;
 
 
 import lombok.RequiredArgsConstructor;
