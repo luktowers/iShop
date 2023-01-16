@@ -10,8 +10,5 @@
         <module name="client.main" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="client.localH2" target="11" />
-    </bytecodeTargetLevel>
   </component>
 </project>

@@ -63,7 +63,7 @@ public class ClientServiceTest {
 
         CreateClientRequest createRequest = new CreateClientRequest(NAME, EMAIL, CPF);
 
-        var actual = service.create(createRequest);
+        var actual = service.create(client);
 
         verify(repository, times(1)).save(any());
         assertEquals(expected, actual);

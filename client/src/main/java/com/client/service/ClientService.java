@@ -23,8 +23,8 @@ public class ClientService {
         return repository.existsById(id);
     }
 
-    public Client create(CreateClientRequest request){
-        return repository.save(new Client(UUID.randomUUID(), request.getName(), request.getEmail(), request.getCpf()));
+    public Client create(Client client){
+        return repository.save(client);
     }
 
     public Optional<Client> findById(UUID id) {
@@ -47,4 +47,5 @@ public class ClientService {
         repository.deleteById(id);
 
     }
+
 }

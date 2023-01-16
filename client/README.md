@@ -3,8 +3,10 @@
 The Client microservice has the purpose of creating and handling the client information.
 
 ## Architecture
+<p align="center">
+  <img src="../architecture-diagrams/client-diagram.png" />
+</p>
 
-![Component View](../architecture-diagrams/client-diagram.png "Component View")
 
 ### Run and Test
 
