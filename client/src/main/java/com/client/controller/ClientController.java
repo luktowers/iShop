@@ -25,6 +25,14 @@ public class ClientController {
 	@Autowired
 	private ClientService service;
 
+	private ClientDto convertToClientDto(Client client) {
+		return new ClientDto(
+				client.getId(),
+				client.getName(),
+				client.getEmail(),
+				client.getCpf());
+	}
+
 	@PostMapping
 	public ResponseEntity<ClientDto> create(@RequestBody CreateClientRequest request)
 			throws HttpClientErrorException.BadRequest {
@@ -36,24 +44,16 @@ public class ClientController {
 
 		service.create(client);
 
-		ClientDto clientDto = new ClientDto(
-				client.getId(),
-				client.getName(),
-				client.getEmail(),
-				client.getCpf());
+		ClientDto clientDto = convertToClientDto(client);
 
 		return ResponseEntity.status(HttpStatus.CREATED).body(clientDto);
 	}
 
 	@GetMapping(path = { "/{id}" })
-	public ResponseEntity<ClientDto>getById(@PathVariable UUID id){
+	public ResponseEntity<ClientDto> getById(@PathVariable UUID id){
 		if(service.existsById(id)){
 			Client client = service.findById(id).get();
-			ClientDto clientDto = new ClientDto(
-					client.getId(),
-					client.getName(),
-					client.getEmail(),
-					client.getCpf());
+			ClientDto clientDto = convertToClientDto(client);
 			return ResponseEntity.ok().body(clientDto);
 		}
 		else {
@@ -62,17 +62,16 @@ public class ClientController {
 	}
 
 	@GetMapping
-	public ResponseEntity<List<ClientDto>>getAll(){
+	public ResponseEntity<List<ClientDto>> getAll(){
 		var response = service.findAll();
 
-		List<ClientDto> list = response.stream().map(client ->
-						new ClientDto(client.getId(), client.getName(), client.getEmail(), client.getCpf()))
+		List<ClientDto> list = response.stream().map(this::convertToClientDto)
 				.collect(Collectors.toList());
 		return ResponseEntity.ok(list);
 	}
 
 	@PutMapping(path = { "/{id}" })
-	public ResponseEntity<ClientDto>update(@PathVariable UUID id, @RequestBody ClientUpdateRequest request){
+	public ResponseEntity<ClientDto> update(@PathVariable UUID id, @RequestBody ClientUpdateRequest request){
 		if(service.existsById(id)){
 
 			service.update(id, request);
